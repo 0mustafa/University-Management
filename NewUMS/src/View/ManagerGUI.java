@@ -6,72 +6,29 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
-import javax.tools.DiagnosticCollector;
-
-import com.toedter.calendar.JDateChooser;
-
-import Helper.*;
-import Model.Department;
-import Model.Faculty;
 import Model.Instructor;
-import Model.Lesson;
-import Model.LessonStudent;
 import Model.Manager;
-import Model.Student;
 
 import javax.swing.JLabel;
-import javax.swing.JMenuItem;
-
 import java.awt.Font;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Iterator;
-
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.Color;
-import javax.swing.JTabbedPane;
-import javax.swing.JTextField;
-import javax.swing.JTable;
 import javax.swing.JScrollPane;
-import javax.swing.JComboBox;
-import javax.swing.JToggleButton;
-import javax.swing.JLayeredPane;
-import javax.swing.SpringLayout;
-import javax.swing.JToolBar;
 import javax.swing.ImageIcon;
-import javax.swing.JTextPane;
-import javax.swing.JInternalFrame;
 import java.awt.Component;
-import java.awt.ScrollPane;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
-import java.awt.Canvas;
-import java.awt.Button;
-import java.awt.Panel;
-
 import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.JSplitPane;
-import javax.swing.SwingConstants;
 import javax.swing.ButtonGroup;
+import java.awt.SystemColor;
+import javax.swing.SwingConstants;
 
 public class ManagerGUI extends JFrame {
 
 	private JPanel contentPane;
-	static Instructor instructor2 = new Instructor();
+	static Manager manager2 = new Manager();
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	/**
@@ -81,7 +38,7 @@ public class ManagerGUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ManagerGUI frame = new ManagerGUI(instructor2);
+					ManagerGUI frame = new ManagerGUI(manager2);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -93,110 +50,221 @@ public class ManagerGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ManagerGUI(Instructor instructor) {
+	public ManagerGUI(Manager manager) {
 		setResizable(false);
 
 		setTitle("Yönetici Paneli");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1504, 933);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(230, 230, 250));
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+
+				
+		JButton instructor_settings = new JButton("Egitmen Yonetimi");
+		instructor_settings.setFocusPainted(false);
+		instructor_settings.setForeground(new Color(112, 112, 112));
+		instructor_settings.setBounds(0, 231, 258, 70);
+		instructor_settings.setBackground(new Color(17, 17, 17));
+		instructor_settings.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				
+				instructor_settings.setBackground(new Color(50, 50, 50));
+				
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				
+				instructor_settings.setBackground(new Color(17, 17, 17));
+				
+			}
+		});
 		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\bjkli\\OneDrive\\Masa\u00FCst\u00FC\\avatar3.png"));
-		lblNewLabel_1.setBounds(90, 130, 60, 58);
-		contentPane.add(lblNewLabel_1);
+		JLabel lblNewLabel_5 = new JLabel("Üniversite Yönetim Sistemine Hoþ Geldiniz.");
+		lblNewLabel_5.setForeground(Color.WHITE);
+		lblNewLabel_5.setFont(new Font("Segoe UI", Font.BOLD, 30));
+		lblNewLabel_5.setBounds(413, 260, 967, 70);
+		contentPane.add(lblNewLabel_5);
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setForeground(Color.WHITE);
+		lblNewLabel_3.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\bjkli\\git\\repository5\\University-Management\\NewUMS\\img\\avatar.png"));
+		lblNewLabel_3.setBounds(20, 56, 46, 70);
+		lblNewLabel_3.setBorder(null);
+		contentPane.add(lblNewLabel_3);
+		instructor_settings.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		instructor_settings.setBorder(null);
+		contentPane.add(instructor_settings);
+		
 
-		JLabel lblNewLabel = new JLabel("Hoþ Geldiniz, " + instructor.getFirst_name().toUpperCase() + " "
-				+ instructor.getLast_name().toUpperCase());
-		lblNewLabel.setEnabled(false);
-		lblNewLabel.setBounds(90, 35, 403, 25);
-		lblNewLabel.setFont(new Font("Montserrat Medium", Font.PLAIN, 18));
-		contentPane.add(lblNewLabel);
+		JButton student_settings = new JButton("Ogrenci Yonetimi");
+		student_settings.setFocusPainted(false);
+		student_settings.setForeground(new Color(112, 112, 112));
+		student_settings.setBounds(0, 312, 258, 70);
+		student_settings.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				
+				student_settings.setBackground(new Color(50, 50, 50));
+				
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				
+				student_settings.setBackground(new Color(17, 17, 17));
+				
+			}
+		});
+		student_settings.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		student_settings.setBorder(null);
+		contentPane.add(student_settings);
+		student_settings.setBackground(new Color(17, 17, 17));
+		
 
-		JButton btn_manager_logout = new JButton("Çýkýþ Yap");
-		btn_manager_logout.setBounds(1286, 31, 111, 40);
-		btn_manager_logout.setFont(new Font("Montserrat Medium", Font.PLAIN, 14));
-		btn_manager_logout.addActionListener(new ActionListener() {
+		JButton lesson_settings = new JButton("Ders Yonetimi");
+		lesson_settings.setFocusPainted(false);
+		lesson_settings.setForeground(new Color(112, 112, 112));
+		lesson_settings.setBounds(0, 393, 258, 70);
+		lesson_settings.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				
+				lesson_settings.setBackground(new Color(50, 50, 50));
+				
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				
+				lesson_settings.setBackground(new Color(17, 17, 17));
+				
+			}
+		});
+		lesson_settings.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		lesson_settings.setBorder(null);
+		contentPane.add(lesson_settings);
+		lesson_settings.setBackground(new Color(17, 17, 17));
 
+		JButton faculty_settings = new JButton("Fakulte Yonetimi");
+		faculty_settings.setFocusPainted(false);
+		faculty_settings.setForeground(new Color(112, 112, 112));
+		faculty_settings.setBounds(0, 474, 258, 70);
+		faculty_settings.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				
+				faculty_settings.setBackground(new Color(50, 50, 50));
+				
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				
+				faculty_settings.setBackground(new Color(17, 17, 17));
+				
+			}
+		});
+		faculty_settings.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		faculty_settings.setBorder(null);
+		contentPane.add(faculty_settings);
+		faculty_settings.setBackground(new Color(17, 17, 17));
+
+		JLabel lblNewLabel_2 = new JLabel("<html>"+ manager.getFirst_name().toUpperCase() + " " + manager.getLast_name().toUpperCase() +"<br/>\r\n<p style=\"font-weight:normal;\">Yönetici</p>\r\n</html>");
+		lblNewLabel_2.setForeground(new Color(112, 112, 112));
+		lblNewLabel_2.setBounds(67, 53, 177, 77);
+		lblNewLabel_2.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		contentPane.add(lblNewLabel_2);
+		
+		JButton faculty_settings_2 = new JButton("Çýkýþ Yap");
+		faculty_settings_2.setFocusPainted(false);
+		faculty_settings_2.addActionListener(new ActionListener() {
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				LoginGUI login = new LoginGUI();
 				login.setVisible(true);
 				dispose();
-
+				
 			}
 		});
-		btn_manager_logout.setBackground(new Color(255, 192, 203));
-		contentPane.add(btn_manager_logout);
+		faculty_settings_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
 				
-		JButton instructor_settings = new JButton("Egitmen Yonetimi");
-		instructor_settings.setFont(new Font("Montserrat SemiBold", Font.PLAIN, 11));
-		instructor_settings.setBorder(BorderFactory.createEmptyBorder());
-		instructor_settings.setBounds(94, 279, 136, 58);
-		contentPane.add(instructor_settings);
-		instructor_settings.setForeground(Color.BLACK);
-		instructor_settings.setBackground(Color.WHITE);
-
-		JButton student_settings = new JButton("Ogrenci Yonetimi");
-		student_settings.setFont(new Font("Montserrat SemiBold", Font.PLAIN, 11));
-		student_settings.setBorder(BorderFactory.createEmptyBorder());
-		student_settings.setBounds(94, 375, 136, 58);
-		contentPane.add(student_settings);
-		student_settings.setBackground(Color.WHITE);
-		student_settings.setForeground(Color.BLACK);
-
-		JButton lesson_settings = new JButton("Ders Yonetimi");
-		lesson_settings.setFont(new Font("Montserrat SemiBold", Font.PLAIN, 11));
-		lesson_settings.setBorder(BorderFactory.createEmptyBorder());
-		lesson_settings.setBounds(94, 469, 136, 58);
-		contentPane.add(lesson_settings);
-		lesson_settings.setBackground(Color.WHITE);
-		lesson_settings.setForeground(Color.BLACK);
-
-		JButton faculty_settings = new JButton("Fakulte Yonetimi");
-		faculty_settings.setFont(new Font("Montserrat SemiBold", Font.PLAIN, 11));
-		faculty_settings.setBorder(BorderFactory.createEmptyBorder());
-		faculty_settings.setBounds(94, 566, 136, 58);
-		contentPane.add(faculty_settings);
-		faculty_settings.setBackground(Color.WHITE);
-		faculty_settings.setForeground(Color.BLACK);
+				faculty_settings_2.setBackground(new Color(50, 50, 50));
+				
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				
+				faculty_settings_2.setBackground(new Color(17, 17, 17));
+				
+			}
+		});
+		faculty_settings_2.setIcon(new ImageIcon("C:\\Users\\bjkli\\git\\repository5\\University-Management\\NewUMS\\img\\Iconly-Light-Logout.png"));
+		faculty_settings_2.setForeground(new Color(112, 112, 112));
+		faculty_settings_2.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		faculty_settings_2.setBorder(null);
+		faculty_settings_2.setBackground(new Color(17, 17, 17));
+		faculty_settings_2.setBounds(0, 735, 258, 50);
+		contentPane.add(faculty_settings_2);
 		
-				JLabel lblNewLabel_2 = new JLabel(instructor.getFirst_name().toUpperCase() + " " + instructor.getLast_name().toUpperCase());
-				lblNewLabel_2.setFont(new Font("Montserrat SemiBold", Font.PLAIN, 11));
-				lblNewLabel_2.setBounds(160, 143, 216, 20);
-				contentPane.add(lblNewLabel_2);
+		JButton faculty_settings_1 = new JButton("Ayarlar");
+		faculty_settings_1.setFocusPainted(false);
+		faculty_settings_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				
-				JLabel lblNewLabel_3 = new JLabel("Yonetici");
-				lblNewLabel_3.setFont(new Font("Montserrat Medium", Font.PLAIN, 11));
-				lblNewLabel_3.setBounds(160, 163, 46, 14);
-				contentPane.add(lblNewLabel_3);
+				ManagerSettingsGUI managerSettings = new ManagerSettingsGUI(manager);
+				managerSettings.setVisible(true);
 				
-				JLabel lblNewLabel_4 = new JLabel("");
-				lblNewLabel_4.setIcon(new ImageIcon("C:\\Users\\bjkli\\OneDrive\\Masa\u00FCst\u00FC\\Rectangle 1s.png"));
-				lblNewLabel_4.setBounds(80, 91, 333, 163);
-				contentPane.add(lblNewLabel_4);
+			}
+		});
+		faculty_settings_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
 				
-				JButton btnNewButton = new JButton("Hesap Ayarlari");
-				btnNewButton.setFont(new Font("Montserrat SemiBold", Font.PLAIN, 11));
-				btnNewButton.setBorder(BorderFactory.createEmptyBorder());
-				btnNewButton.setBackground(Color.WHITE);
-				btnNewButton.setBounds(94, 761, 136, 33);
-				contentPane.add(btnNewButton);
+				faculty_settings_1.setBackground(new Color(50, 50, 50));
 				
-				JLabel lblNewLabel_5 = new JLabel("");
-				lblNewLabel_5.setIcon(new ImageIcon("C:\\Users\\bjkli\\OneDrive\\Masa\u00FCst\u00FC\\Rectangle 6.png"));
-				lblNewLabel_5.setBounds(440, 82, 966, 728);
-				contentPane.add(lblNewLabel_5);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				
+				faculty_settings_1.setBackground(new Color(17, 17, 17));
+				
+			}
+		});
+		faculty_settings_1.setIcon(new ImageIcon("C:\\Users\\bjkli\\git\\repository5\\University-Management\\NewUMS\\img\\Iconly-Light-Setting.png"));
+		faculty_settings_1.setForeground(new Color(112, 112, 112));
+		faculty_settings_1.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		faculty_settings_1.setBorder(null);
+		faculty_settings_1.setBackground(new Color(17, 17, 17));
+		faculty_settings_1.setBounds(0, 688, 258, 50);
+		contentPane.add(faculty_settings_1);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\bjkli\\git\\repository5\\University-Management\\NewUMS\\img\\leftMenuBackground.png"));
+		lblNewLabel_1.setBounds(0, 0, 258, 894);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\bjkli\\git\\repository5\\University-Management\\NewUMS\\img\\logo 150px.png"));
+		lblNewLabel.setBounds(390, 127, 144, 122);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_4 = new JLabel("");
+		lblNewLabel_4.setIcon(new ImageIcon("C:\\Users\\bjkli\\git\\repository5\\University-Management\\NewUMS\\img\\Rectangle 6.png"));
+		lblNewLabel_4.setBounds(248, 0, 1240, 440);
+		contentPane.add(lblNewLabel_4);
+
 		faculty_settings.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				FacultyProcessGUI facultyProcess = new FacultyProcessGUI(instructor);
+				FacultyProcessGUI facultyProcess = new FacultyProcessGUI(manager);
 				facultyProcess.setVisible(true);
 				dispose();
 
@@ -207,7 +275,7 @@ public class ManagerGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				LessonProcessGUI lessonProcess = new LessonProcessGUI(instructor);
+				LessonProcessGUI lessonProcess = new LessonProcessGUI(manager);
 				lessonProcess.setVisible(true);
 				dispose();
 
@@ -218,7 +286,7 @@ public class ManagerGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				StudentProcessGUI studentProcess = new StudentProcessGUI(instructor);
+				StudentProcessGUI studentProcess = new StudentProcessGUI(manager);
 				studentProcess.setVisible(true);
 				dispose();
 
@@ -229,7 +297,7 @@ public class ManagerGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				InstructorProcessGUI instructorProcess = new InstructorProcessGUI(instructor);
+				InstructorProcessGUI instructorProcess = new InstructorProcessGUI(manager);
 				instructorProcess.setVisible(true);
 				dispose();
 
@@ -254,4 +322,5 @@ public class ManagerGUI extends JFrame {
 			}
 		});
 	}
+	
 }

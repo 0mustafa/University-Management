@@ -29,6 +29,7 @@ import Helper.Helper;
 import Model.Department;
 import Model.Faculty;
 import Model.Instructor;
+import Model.Manager;
 import Model.Student;
 
 import javax.swing.JTable;
@@ -44,7 +45,7 @@ public class StudentProcessGUI extends JFrame {
 	private JTextField txt_add_student_score;
 	private JTextField txt_remove_student_id;
 	private JTable table_student;
-	static Instructor instructor = new Instructor();
+	static Manager manager = new Manager();
 	static Student student = new Student();
 	static Faculty faculty = new Faculty();
 	static Department department = new Department();
@@ -63,7 +64,7 @@ public class StudentProcessGUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					StudentProcessGUI frame = new StudentProcessGUI(instructor);
+					StudentProcessGUI frame = new StudentProcessGUI(manager);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -75,7 +76,7 @@ public class StudentProcessGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public StudentProcessGUI(Instructor instructor) {
+	public StudentProcessGUI(Manager manager) {
 
 		// ********** STUDENT MODEL **********
 		studentModel = new DefaultTableModel();
@@ -313,8 +314,8 @@ public class StudentProcessGUI extends JFrame {
 		btn_remove_student.setBounds(1202, 693, 122, 40);
 		contentPane.add(btn_remove_student);
 		
-		JLabel welcome = new JLabel("Hoþ Geldiniz, " + instructor.getFirst_name().toUpperCase() + " "
-				+ instructor.getLast_name().toUpperCase());
+		JLabel welcome = new JLabel("Hoþ Geldiniz, " + manager.getFirst_name().toUpperCase() + " "
+				+ manager.getLast_name().toUpperCase());
 		welcome.setFont(new Font("Montserrat Medium", Font.PLAIN, 18));
 		welcome.setBounds(41, 37, 403, 25);
 		contentPane.add(welcome);
@@ -325,7 +326,7 @@ public class StudentProcessGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				ManagerGUI managerGUI = new ManagerGUI(instructor);
+				ManagerGUI managerGUI = new ManagerGUI(manager);
 				managerGUI.setVisible(true);
 				dispose();
 			}

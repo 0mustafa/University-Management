@@ -204,15 +204,15 @@ public class LoginGUI extends JFrame {
 						while(myRs.next()) {
 							if(txt_manager_mail.getText().equals(myRs.getString("admin_mail")) && txt_manager_password.getText().equals(myRs.getString("password"))) {
 								kontrol = true;
-								Instructor instructor = new Instructor();
-								instructor.setId(myRs.getInt("id"));
-								instructor.setFirst_name(myRs.getString("first_name"));
-								instructor.setLast_name(myRs.getString("last_name"));
-								instructor.setMail(instructor.getFirst_name() + "." + instructor.getLast_name() + "@edu.tr");
-								instructor.setIdentityNumber(myRs.getString("tc_no"));
-								instructor.setPassword(myRs.getString("password"));
-								System.out.println("Hoþgeldiniz " + instructor.getFirst_name());
-								ManagerGUI managerGUI = new ManagerGUI(instructor);
+								Manager manager = new Manager();
+								manager.setId(myRs.getInt("id"));
+								manager.setFirst_name(myRs.getString("first_name"));
+								manager.setLast_name(myRs.getString("last_name"));
+								manager.setIdentityNumber(myRs.getString("tc_no"));
+								manager.setPassword(myRs.getString("password"));
+								manager.setAdminMail(myRs.getString("admin_mail"));
+								System.out.println("Hoþgeldiniz " + manager.getFirst_name());
+								ManagerGUI managerGUI = new ManagerGUI(manager);
 								managerGUI.setVisible(true);
 								dispose();
 							}

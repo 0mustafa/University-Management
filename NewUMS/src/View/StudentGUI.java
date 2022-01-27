@@ -18,6 +18,7 @@ import Model.Student;
 import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 
 public class StudentGUI extends JFrame {
 
@@ -82,7 +83,7 @@ public class StudentGUI extends JFrame {
 		contentPane.add(btn_manager_logout);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(36, 91, 479, 538);
+		scrollPane.setBounds(36, 290, 934, 339);
 		contentPane.add(scrollPane);
 
 		studentModel = new DefaultTableModel();
@@ -100,36 +101,85 @@ public class StudentGUI extends JFrame {
 
 		table = new JTable(studentModel);
 		setBackground(Color.WHITE);
+		table.setRowHeight(30);
 		scrollPane.setViewportView(table);
 		
-		JLabel lblNewLabel_1 = new JLabel("AD: "+ student.getFirst_name());
-		lblNewLabel_1.setFont(new Font("Montserrat Medium", Font.PLAIN, 18));
-		lblNewLabel_1.setBounds(585, 91, 385, 23);
+		JLabel lblNewLabel_1 = new JLabel();
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_1.setText("AD:");
+		lblNewLabel_1.setFont(new Font("Montserrat Medium", Font.BOLD, 18));
+		lblNewLabel_1.setBounds(36, 111, 110, 23);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("SOYAD: "+ student.getLast_name());
-		lblNewLabel_1_1.setFont(new Font("Montserrat Medium", Font.PLAIN, 18));
-		lblNewLabel_1_1.setBounds(585, 116, 385, 23);
+		JLabel lblNewLabel_1_1 = new JLabel();
+		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_1_1.setText("SOYAD:");
+		lblNewLabel_1_1.setFont(new Font("Montserrat Medium", Font.BOLD, 18));
+		lblNewLabel_1_1.setBounds(36, 136, 110, 23);
 		contentPane.add(lblNewLabel_1_1);
 		
-		JLabel lblNewLabel_1_1_1 = new JLabel("NUMARA: "+ student.getNumber());
-		lblNewLabel_1_1_1.setFont(new Font("Montserrat Medium", Font.PLAIN, 18));
-		lblNewLabel_1_1_1.setBounds(585, 141, 385, 23);
+		JLabel lblNewLabel_1_1_1 = new JLabel();
+		lblNewLabel_1_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_1_1_1.setText("MAIL:");
+		lblNewLabel_1_1_1.setFont(new Font("Montserrat Medium", Font.BOLD, 18));
+		lblNewLabel_1_1_1.setBounds(36, 161, 110, 23);
 		contentPane.add(lblNewLabel_1_1_1);
 		
-		JLabel lblNewLabel_1_1_1_1 = new JLabel("TC: "+ student.getIdentityNumber());
-		lblNewLabel_1_1_1_1.setFont(new Font("Montserrat Medium", Font.PLAIN, 18));
-		lblNewLabel_1_1_1_1.setBounds(585, 166, 385, 23);
+		JLabel lblNewLabel_1_1_1_1 = new JLabel();
+		lblNewLabel_1_1_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_1_1_1_1.setText("TC NO:");
+		lblNewLabel_1_1_1_1.setFont(new Font("Montserrat Medium", Font.BOLD, 18));
+		lblNewLabel_1_1_1_1.setBounds(36, 186, 110, 23);
 		contentPane.add(lblNewLabel_1_1_1_1);
 		
-		JLabel lblNewLabel_1_1_1_1_1 = new JLabel("FAKULTE: "+ student.getFacultyName());
-		lblNewLabel_1_1_1_1_1.setFont(new Font("Montserrat Medium", Font.PLAIN, 18));
-		lblNewLabel_1_1_1_1_1.setBounds(585, 191, 385, 23);
+		JLabel lblNewLabel_1_1_1_1_1 = new JLabel();
+		lblNewLabel_1_1_1_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_1_1_1_1_1.setText("FAKULTE:");
+		lblNewLabel_1_1_1_1_1.setFont(new Font("Montserrat Medium", Font.BOLD, 18));
+		lblNewLabel_1_1_1_1_1.setBounds(36, 211, 110, 23);
 		contentPane.add(lblNewLabel_1_1_1_1_1);
 		
-		JLabel lblNewLabel_1_1_1_1_2 = new JLabel("BOLUM: "+ student.getDepartmentName());
-		lblNewLabel_1_1_1_1_2.setFont(new Font("Montserrat Medium", Font.PLAIN, 18));
-		lblNewLabel_1_1_1_1_2.setBounds(585, 216, 385, 23);
+		JLabel lblNewLabel_1_1_1_1_2 = new JLabel();
+		lblNewLabel_1_1_1_1_2.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_1_1_1_1_2.setText("BOLUM:");
+		lblNewLabel_1_1_1_1_2.setFont(new Font("Montserrat Medium", Font.BOLD, 18));
+		lblNewLabel_1_1_1_1_2.setBounds(36, 236, 110, 23);
 		contentPane.add(lblNewLabel_1_1_1_1_2);
+		
+		JLabel lblNewLabel_1_2 = new JLabel(student.getFirst_name());
+		lblNewLabel_1_2.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_1_2.setFont(new Font("Montserrat Medium", Font.PLAIN, 16));
+		lblNewLabel_1_2.setBounds(159, 111, 222, 23);
+		contentPane.add(lblNewLabel_1_2);
+		
+		JLabel lblNewLabel_1_3 = new JLabel(student.getLast_name());
+		lblNewLabel_1_3.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_1_3.setFont(new Font("Montserrat Medium", Font.PLAIN, 16));
+		lblNewLabel_1_3.setBounds(159, 136, 222, 23);
+		contentPane.add(lblNewLabel_1_3);
+		
+		JLabel lblNewLabel_1_4 = new JLabel(student.getMail());
+		lblNewLabel_1_4.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_1_4.setFont(new Font("Montserrat Medium", Font.PLAIN, 16));
+		lblNewLabel_1_4.setBounds(159, 161, 222, 23);
+		contentPane.add(lblNewLabel_1_4);
+		
+		JLabel lblNewLabel_1_5 = new JLabel(student.getIdentityNumber());
+		lblNewLabel_1_5.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_1_5.setFont(new Font("Montserrat Medium", Font.PLAIN, 16));
+		lblNewLabel_1_5.setBounds(159, 186, 222, 23);
+		contentPane.add(lblNewLabel_1_5);
+		
+		JLabel lblNewLabel_1_6 = new JLabel(student.getFacultyName());
+		lblNewLabel_1_6.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_1_6.setFont(new Font("Montserrat Medium", Font.PLAIN, 16));
+		lblNewLabel_1_6.setBounds(159, 211, 222, 23);
+		contentPane.add(lblNewLabel_1_6);
+		
+		JLabel lblNewLabel_1_7 = new JLabel(student.getDepartmentName());
+		lblNewLabel_1_7.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_1_7.setFont(new Font("Montserrat Medium", Font.PLAIN, 16));
+		lblNewLabel_1_7.setBounds(159, 236, 222, 23);
+		contentPane.add(lblNewLabel_1_7);
 	}
 }

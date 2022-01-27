@@ -15,6 +15,7 @@ import Helper.Helper;
 import Model.Instructor;
 import Model.Lesson;
 import Model.LessonStudent;
+import Model.Manager;
 import Model.Student;
 
 import javax.swing.JScrollPane;
@@ -37,11 +38,13 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+import javax.swing.JPasswordField;
+import javax.swing.JSeparator;
 
 public class LessonProcessGUI extends JFrame {
 
 	private JPanel contentPane;
-	static Instructor instructor = new Instructor();
+	static Manager manager = new Manager();
 	static Lesson lesson = new Lesson();
 	static LessonStudent lessonStudent = new LessonStudent();
 	static Lesson selectedLesson = new Lesson();
@@ -72,7 +75,7 @@ public class LessonProcessGUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LessonProcessGUI frame = new LessonProcessGUI(instructor);
+					LessonProcessGUI frame = new LessonProcessGUI(manager);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -84,7 +87,7 @@ public class LessonProcessGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LessonProcessGUI(Instructor instructor) {
+	public LessonProcessGUI(Manager manager) {
 		setTitle("Ders Yonetimi");
 
 		// ********** LESSON MODEL **********
@@ -289,8 +292,8 @@ public class LessonProcessGUI extends JFrame {
 		txt_student_id.setColumns(10);
 		contentPane.add(txt_student_id);
 		
-		JLabel welcome = new JLabel("Hoþ Geldiniz, " + instructor.getFirst_name().toUpperCase() + " "
-				+ instructor.getLast_name().toUpperCase());
+		JLabel welcome = new JLabel("Hoþ Geldiniz, " + manager.getFirst_name().toUpperCase() + " "
+				+ manager.getLast_name().toUpperCase());
 		welcome.setBounds(38, 33, 403, 25);
 		welcome.setFont(new Font("Montserrat Medium", Font.PLAIN, 18));
 		contentPane.add(welcome);
@@ -302,7 +305,7 @@ public class LessonProcessGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				ManagerGUI managerGUI = new ManagerGUI(instructor);
+				ManagerGUI managerGUI = new ManagerGUI(manager);
 				dispose();
 				managerGUI.setVisible(true);
 			}
@@ -355,7 +358,7 @@ public class LessonProcessGUI extends JFrame {
 				
 
 				for(Lesson ls : lesson.getAllLessons()) {
-					if(ls.getLessonName().contains(txt_search_lesson.getText()) || ls.getLessonId() == Integer.parseInt(txt_search_lesson.getText())){
+					if(ls.getLessonName().contains(txt_search_lesson.getText()) || String.valueOf(ls.getLessonId()).equals(txt_search_lesson.getText())){
 						lessonData[0] = ls.getLessonId();
 						lessonData[1] = ls.getLessonName();
 						lessonModel.addRow(lessonData);

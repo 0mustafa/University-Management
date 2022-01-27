@@ -18,6 +18,8 @@ import Helper.Helper;
 import Model.Department;
 import Model.Faculty;
 import Model.Instructor;
+import Model.Manager;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -34,7 +36,8 @@ import javax.swing.JComboBox;
 public class InstructorProcessGUI extends JFrame {
 
 	private JPanel contentPane;
-	static Instructor instructor2 = new Instructor();
+	static Manager manager = new Manager();
+	static Instructor instructor = new Instructor();
 	static Faculty faculty = new Faculty();
 	static Department department = new Department();
 	private JTextField txt_add_instructor_first_name;
@@ -58,7 +61,7 @@ public class InstructorProcessGUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					InstructorProcessGUI frame = new InstructorProcessGUI(instructor2);
+					InstructorProcessGUI frame = new InstructorProcessGUI(manager);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -70,7 +73,7 @@ public class InstructorProcessGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public InstructorProcessGUI(Instructor instructor) {
+	public InstructorProcessGUI(Manager manager) {
 		
 		// ********** INSTRUCTOR Model **********
 		instructorModel = new DefaultTableModel();
@@ -335,8 +338,8 @@ public class InstructorProcessGUI extends JFrame {
 		});
 
 		
-		JLabel welcome = new JLabel("Hoþ Geldiniz, " + instructor.getFirst_name().toUpperCase() + " "
-				+ instructor.getLast_name().toUpperCase());
+		JLabel welcome = new JLabel("Hoþ Geldiniz, " + manager.getFirst_name().toUpperCase() + " "
+				+ manager.getLast_name().toUpperCase());
 		welcome.setBounds(42, 38, 403, 25);
 		welcome.setFont(new Font("Montserrat Medium", Font.PLAIN, 18));
 		contentPane.add(welcome);
@@ -347,7 +350,7 @@ public class InstructorProcessGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				ManagerGUI managerGUI = new ManagerGUI(instructor);
+				ManagerGUI managerGUI = new ManagerGUI(manager);
 				dispose();
 				managerGUI.setVisible(true);
 			}
@@ -364,7 +367,7 @@ public class InstructorProcessGUI extends JFrame {
 		DefaultTableModel clearModel = (DefaultTableModel) table_instructor.getModel();
 		clearModel.setRowCount(0);
 
-		for(Instructor ins : instructor2.getAllInstructors()) {
+		for(Instructor ins : instructor.getAllInstructors()) {
 			instructorData[0] = ins.getId();
 			instructorData[1] = ins.getFirst_name();
 			instructorData[2] = ins.getLast_name();
