@@ -1,6 +1,5 @@
 package View;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -14,17 +13,13 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
-import java.util.stream.Collectors;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
@@ -40,6 +35,7 @@ public class ManagerLoginGUI extends JFrame {
 	static Student st = new Student();
 	private JTextField txt_manager_mail;
 	private JPasswordField txt_manager_newPass;
+	private String imagesPath = "C:\\Users\\bjkli\\git\\repository5\\University-Management\\NewUMS\\img\\";  //proje dosyasýnýn içindeki img klasörünün yolunu buraya giriniz!
 
 	/**
 	 * Launch the application.
@@ -83,7 +79,7 @@ public class ManagerLoginGUI extends JFrame {
 				
 			}
 		});
-		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\bjkli\\git\\repository5\\University-Management\\NewUMS\\img\\swap.png"));
+		btnNewButton_1.setIcon(new ImageIcon(imagesPath + "swap.png"));
 		btnNewButton_1.setBackground(new Color(68, 49, 65));
 		btnNewButton_1.setForeground(new Color(17, 17, 17));
 		btnNewButton_1.setBorder(null);
@@ -173,8 +169,7 @@ public class ManagerLoginGUI extends JFrame {
 		});
 
 		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon(
-				"C:\\Users\\bjkli\\git\\repository5\\University-Management\\NewUMS\\img\\logo 150px.png"));
+		lblNewLabel_4.setIcon(new ImageIcon(imagesPath + "logo 150px.png"));
 		lblNewLabel_4.setBounds(236, 312, 150, 150);
 		contentPane.add(lblNewLabel_4);
 		btnNewButton.setFocusPainted(false);
@@ -213,13 +208,13 @@ public class ManagerLoginGUI extends JFrame {
 
 		JLabel lblNewLabel_3_1 = new JLabel("");
 		lblNewLabel_3_1.setIcon(
-				new ImageIcon("C:\\Users\\bjkli\\git\\repository5\\University-Management\\NewUMS\\img\\Line 1.png"));
+				new ImageIcon(imagesPath + "Line 1.png"));
 		lblNewLabel_3_1.setBounds(782, 519, 419, 2);
 		contentPane.add(lblNewLabel_3_1);
 
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setIcon(
-				new ImageIcon("C:\\Users\\bjkli\\git\\repository5\\University-Management\\NewUMS\\img\\Line 1.png"));
+				new ImageIcon(imagesPath + "Line 1.png"));
 		lblNewLabel_3.setBounds(782, 437, 419, 2);
 		contentPane.add(lblNewLabel_3);
 
@@ -257,64 +252,16 @@ public class ManagerLoginGUI extends JFrame {
 		lblNewLabel_2.setBounds(75, 494, 504, 46);
 		contentPane.add(lblNewLabel_2);
 
-//		JButton btn_manager_login = new JButton("Giri\u015F Yap");
-//		btn_manager_login.addActionListener(new ActionListener() {
-//
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				if (txt_manager_mail.getText().length() == 0 || txt_manager_password.getText().length() == 0) {
-//					Helper.showMessage("Lütfen tüm alanlarý doldurunuz!");
-//				} else {
-//
-//					try {
-//						Connection con = connection.connDb();
-//						Statement st = con.createStatement();
-//						ResultSet myRs = st.executeQuery("SELECT * FROM admins");
-//						boolean kontrol = false;
-//						while (myRs.next()) {
-//							if (txt_manager_mail.getText().equals(myRs.getString("admin_mail"))
-//									&& txt_manager_password.getText().equals(myRs.getString("password"))) {
-//								kontrol = true;
-//								Manager manager = new Manager();
-//								manager.setId(myRs.getInt("id"));
-//								manager.setFirst_name(myRs.getString("first_name"));
-//								manager.setLast_name(myRs.getString("last_name"));
-//								manager.setIdentityNumber(myRs.getString("tc_no"));
-//								manager.setPassword(myRs.getString("password"));
-//								manager.setAdminMail(myRs.getString("admin_mail"));
-//								System.out.println("Hoþgeldiniz " + manager.getFirst_name());
-//								ManagerGUI managerGUI = new ManagerGUI(manager);
-//								managerGUI.setVisible(true);
-//								dispose();
-//							}
-//						}
-//						if (kontrol == false) {
-//							Helper.showMessage("Girdiðiniz bilgiler yanlýþtýr!");
-//							txt_manager_mail.setText("");
-//							txt_manager_password.setText("");
-//						}
-//
-//					} catch (SQLException e1) {
-//						// TODO Auto-generated catch block
-//						e1.printStackTrace();
-//					}
-//				}
-//
-//			}
-//		});
-//		btn_manager_login.setBackground(Color.WHITE);
-//		btn_manager_login.setBounds(73, 147, 348, 45);
-//		manager_login.add(btn_manager_login);
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(
-				new ImageIcon("C:\\Users\\bjkli\\git\\repository5\\University-Management\\NewUMS\\img\\LEFT.png"));
+				new ImageIcon(imagesPath + "LEFT.png"));
 		lblNewLabel.setBounds(0, 0, 650, 930);
 		contentPane.add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(
-				new ImageIcon("C:\\Users\\bjkli\\git\\repository5\\University-Management\\NewUMS\\img\\RIGHT.png"));
+				new ImageIcon(imagesPath + "RIGHT.png"));
 		lblNewLabel_1.setBounds(647, 0, 650, 930);
 		contentPane.add(lblNewLabel_1);
 	}

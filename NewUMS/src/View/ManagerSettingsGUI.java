@@ -1,25 +1,18 @@
 package View;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Helper.Helper;
 import Model.Manager;
 
 import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.SwingConstants;
-import java.awt.SystemColor;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Color;
 
@@ -34,6 +27,7 @@ public class ManagerSettingsGUI extends JFrame {
 	public String kontrol = "profil";
 	JButton instructor_settings;
 	JButton instructor_settings_1;
+	private String imagesPath = "C:\\Users\\bjkli\\git\\repository5\\University-Management\\NewUMS\\img\\";  //proje dosyasýnýn içindeki img klasörünün yolunu buraya giriniz!
 
 	/**
 	 * Launch the application.
@@ -65,7 +59,7 @@ public class ManagerSettingsGUI extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("");
-		lblNewLabel_3_1.setIcon(new ImageIcon("C:\\Users\\bjkli\\git\\repository5\\University-Management\\NewUMS\\img\\avatar.png"));
+		lblNewLabel_3_1.setIcon(new ImageIcon(imagesPath + "avatar.png"));
 		lblNewLabel_3_1.setForeground(Color.WHITE);
 		lblNewLabel_3_1.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		lblNewLabel_3_1.setBorder(null);
@@ -128,7 +122,7 @@ public class ManagerSettingsGUI extends JFrame {
 		contentPane.add(instructor_settings);
 		
 		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\bjkli\\git\\repository5\\University-Management\\NewUMS\\img\\leftMenuBackground.png"));
+		lblNewLabel_2.setIcon(new ImageIcon(imagesPath + "leftMenuBackground.png"));
 		lblNewLabel_2.setBounds(0, 0, 211, 745);
 		contentPane.add(lblNewLabel_2);
 		

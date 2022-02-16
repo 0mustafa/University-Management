@@ -6,8 +6,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Helper.*;
-import Model.Instructor;
-import Model.Manager;
 import Model.Student;
 
 import javax.swing.JLabel;
@@ -22,29 +20,23 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.stream.Collectors;
 
-import javax.swing.JTabbedPane;
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.util.List;
-import javax.swing.border.LineBorder;
-import javax.swing.Icon;
-import javax.swing.JSeparator;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
 public class LoginGUI extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txt_instructor_mail;
-	private JPasswordField txt_instructor_password;
 	private DBConnection connection = new DBConnection();
 	static Student st = new Student();
 	private JTextField txt_student_mail;
 	private JPasswordField txt_student_newPass;
+	private String imagesPath = "C:\\Users\\bjkli\\git\\repository5\\University-Management\\NewUMS\\img\\";  //proje dosyasýnýn içindeki img klasörünün yolunu buraya giriniz!
 
 	/**
 	 * Launch the application.
@@ -88,7 +80,7 @@ public class LoginGUI extends JFrame {
 				
 			}
 		});
-		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\bjkli\\git\\repository5\\University-Management\\NewUMS\\img\\swap.png"));
+		btnNewButton_1.setIcon(new ImageIcon(imagesPath + "swap.png"));
 		btnNewButton_1.setBackground(new Color(68, 49, 65));
 		btnNewButton_1.setForeground(new Color(17, 17, 17));
 		btnNewButton_1.setBorder(null);
@@ -175,7 +167,7 @@ public class LoginGUI extends JFrame {
 		
 		
 		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon("C:\\Users\\bjkli\\git\\repository5\\University-Management\\NewUMS\\img\\logo 150px.png"));
+		lblNewLabel_4.setIcon(new ImageIcon(imagesPath + "logo 150px.png"));
 		lblNewLabel_4.setBounds(236, 312, 150, 150);
 		contentPane.add(lblNewLabel_4);
 		btnNewButton.setFocusPainted(false);
@@ -215,12 +207,12 @@ public class LoginGUI extends JFrame {
 		contentPane.add(txt_student_newPass);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("");
-		lblNewLabel_3_1.setIcon(new ImageIcon("C:\\Users\\bjkli\\git\\repository5\\University-Management\\NewUMS\\img\\Line 1.png"));
+		lblNewLabel_3_1.setIcon(new ImageIcon(imagesPath + "Line 1.png"));
 		lblNewLabel_3_1.setBounds(782, 519, 419, 2);
 		contentPane.add(lblNewLabel_3_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\bjkli\\git\\repository5\\University-Management\\NewUMS\\img\\Line 1.png"));
+		lblNewLabel_3.setIcon(new ImageIcon(imagesPath + "Line 1.png"));
 		lblNewLabel_3.setBounds(782, 437, 419, 2);
 		contentPane.add(lblNewLabel_3);
 		
@@ -261,43 +253,14 @@ public class LoginGUI extends JFrame {
 		contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\bjkli\\git\\repository5\\University-Management\\NewUMS\\img\\LEFT.png"));
+		lblNewLabel.setIcon(new ImageIcon(imagesPath + "LEFT.png"));
 		lblNewLabel.setBounds(0, 0, 650, 930);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\bjkli\\git\\repository5\\University-Management\\NewUMS\\img\\RIGHT.png"));
+		lblNewLabel_1.setIcon(new ImageIcon(imagesPath + "RIGHT.png"));
 		lblNewLabel_1.setBounds(647, 0, 650, 930);
 		contentPane.add(lblNewLabel_1);
 		
-//		JPanel instructor_login = new JPanel();
-//		instructor_login.setBackground(Color.WHITE);
-//		tabbedPane.addTab("Eðitmen Giriþ", null, instructor_login, null);
-//		tabbedPane.setEnabledAt(2, false);
-//		instructor_login.setLayout(null);
-//		
-//		JLabel lblNewLabel_1_2 = new JLabel("E-Posta:");
-//		lblNewLabel_1_2.setFont(new Font("Montserrat Medium", Font.PLAIN, 18));
-//		lblNewLabel_1_2.setBounds(71, 43, 76, 22);
-//		instructor_login.add(lblNewLabel_1_2);
-//		
-//		txt_instructor_mail = new JTextField();
-//		txt_instructor_mail.setColumns(10);
-//		txt_instructor_mail.setBounds(180, 37, 239, 35);
-//		instructor_login.add(txt_instructor_mail);
-//		
-//		txt_instructor_password = new JPasswordField();
-//		txt_instructor_password.setBounds(180, 83, 239, 38);
-//		instructor_login.add(txt_instructor_password);
-//		
-//		JLabel lblNewLabel_1_1_1 = new JLabel("\u015Eifre:");
-//		lblNewLabel_1_1_1.setFont(new Font("Montserrat Medium", Font.PLAIN, 18));
-//		lblNewLabel_1_1_1.setBounds(71, 92, 69, 20);
-//		instructor_login.add(lblNewLabel_1_1_1);
-//		
-//		JButton btn_instructor_login = new JButton("Giri\u015F Yap");
-//		btn_instructor_login.setBackground(Color.WHITE);
-//		btn_instructor_login.setBounds(71, 144, 348, 47);
-//		instructor_login.add(btn_instructor_login);
 	}
 }
