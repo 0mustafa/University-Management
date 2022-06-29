@@ -80,5 +80,5 @@
   <br>
   <hr>
   <h6 style="display:inline-block;">Dipnot: </h6>
-  <p style="display:inline-block;">Bu proje Nesne Yönelimli Programlama (OOP) Dersi projesi olarak hazırlanmıştır (Ocak 2022) ve halen geliştirilmeye devam etmektedir. Ayrıca ilk otomasyon projem olması dolayısıyla benim için ayrı bir önem arz etmektedir.</p>
+  <p style="display:inline-block;">Bu proje Nesne Yönelimli Programlama (OOP) Dersi projesi olarak hazırlanmıştır (Ocak 2022). Ayrıca ilk otomasyon projem olması dolayısıyla benim için ayrı bir önem arz etmektedir.</p>
 
